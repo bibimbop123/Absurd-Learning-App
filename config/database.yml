@@ -16,6 +16,10 @@ development:
     <<: *default
     database: absurd_learning_app_queue_development
 
+  cache:
+    <<: *default
+    database: absurd_learning_app_cache_development
+
 test:
   primary:
     <<: *default
@@ -28,6 +32,10 @@ test:
   queue:
     <<: *default
     database: absurd_learning_app_queue_test
+
+  cache:
+    <<: *default
+    database: absurd_learning_app_cache_test
 
 production:
   primary:
@@ -52,6 +60,15 @@ production:
     adapter: postgresql
     encoding: unicode
     database: absurd_learning_app_queue_production
+    username: postgres
+    password: postgres
+    host: localhost
+    port: 5432
+
+  cache:
+    adapter: postgresql
+    encoding: unicode
+    database: absurd_learning_app_cache_production
     username: postgres
     password: postgres
     host: localhost
