@@ -78,23 +78,19 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
-  primary: &primary_production
-    <<: *default
-    database: absurd_learning_app_production
-    username: absurd_learning_app
-    password: <%= ENV["ABSURD_LEARNING_APP_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: absurd_learning_app_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: absurd_learning_app_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: absurd_learning_app_production_cable
-    migrations_paths: db/cable_migrate
-  url: <%= ENV["DATABASE_URL"] %>
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+development:
+  <<: *default
+  database: absurd_learning_app_development
+
+test:
+  <<: *default
+  database: absurd_learning_app_test
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
