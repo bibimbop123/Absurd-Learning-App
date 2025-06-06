@@ -8,7 +8,7 @@
   <% @absurd_stories.each do |story| %>
     <div class="card shadow-sm mb-4 border-0">
       <div class="card-header bg-dark text-white fw-semibold">
-        <%= story.absurd_theme.name %> Theme
+        <%= story.absurd_theme.name %> Theme (<%= story.learning_concept.name %>)
       </div>
       <div class="card-body">
         <p class="card-text" style="font-size: 1.1rem; line-height: 1.7; font-family: 'Georgia', serif; color: #333;">

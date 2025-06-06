@@ -4,9 +4,9 @@ class LearningConceptsController < ApplicationController
   def index
     @concepts = LearningConcept.all
     @themes = AbsurdTheme.all
-  
+
     @absurd_stories = AbsurdStory.all.order(created_at: :desc).limit(5)
-  
+
     if params[:concept_id].present? && params[:theme_id].present?
       @concept = LearningConcept.find(params[:concept_id])
       @theme = AbsurdTheme.find(params[:theme_id])
@@ -26,7 +26,7 @@ class LearningConceptsController < ApplicationController
       access_token: ENV.fetch("OPENAI_API_KEY"),
       log_errors: true # Highly recommended in development, so you can see what errors OpenAI is returning. Not recommended in production because it could leak private data to your logs.
     )
-   
+
 
     response = client.chat(
     parameters: {
@@ -38,7 +38,7 @@ class LearningConceptsController < ApplicationController
         },
         {
           "role": "user",
-          "content": "Generate a creative, absurd, and hilarious story to explain the learning concept '<%= @concept.name %>' using the theme '<%= @theme.name %>'. The story should be imaginative, full of metaphors, and use absurdity to help the reader deeply understand the concept while being entertained. End the story with a short reflection summarizing the key idea in plain language."
+          "content": "Generate a creative, absurd, and hilarious story to explain the learning concept '#{@concept.name}' using the theme '#{@theme.name}'. The story should be imaginative, full of metaphors, and use absurdity to help the reader deeply understand the concept while being entertained. End the story with a short reflection summarizing the key idea in plain language."
         }
     ]
     }
@@ -55,7 +55,6 @@ class LearningConceptsController < ApplicationController
 
   def show
     @concept = LearningConcept.find(params[:id])
-    @theme = AbsurdTheme.find(params[:theme_id])
     @absurd_stories = @concept.absurd_stories.order(created_at: :desc)
   end
 end
