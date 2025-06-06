@@ -4,18 +4,55 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: absurd_learning_app_development
+  primary:
+    <<: *default
+    database: absurd_learning_app_development
+
+  cable:
+    <<: *default
+    database: absurd_learning_app_cable_development
+
+  queue:
+    <<: *default
+    database: absurd_learning_app_queue_development
 
 test:
-  <<: *default
-  database: absurd_learning_app_test
+  primary:
+    <<: *default
+    database: absurd_learning_app_test
+
+  cable:
+    <<: *default
+    database: absurd_learning_app_cable_test
+
+  queue:
+    <<: *default
+    database: absurd_learning_app_queue_test
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: absurd_learning_app_production
-  username: postgres
-  password: postgres
-  host: localhost
-  port: 5432
+  primary:
+    adapter: postgresql
+    encoding: unicode
+    database: absurd_learning_app_production
+    username: postgres
+    password: postgres
+    host: localhost
+    port: 5432
+
+  cable:
+    adapter: postgresql
+    encoding: unicode
+    database: absurd_learning_app_cable_production
+    username: postgres
+    password: postgres
+    host: localhost
+    port: 5432
+
+  queue:
+    adapter: postgresql
+    encoding: unicode
+    database: absurd_learning_app_queue_production
+    username: postgres
+    password: postgres
+    host: localhost
+    port: 5432
