@@ -14,3 +14,8 @@ test:
 production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
+
+  # 👇 Add this block to fix the cable error
+  cable:
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
