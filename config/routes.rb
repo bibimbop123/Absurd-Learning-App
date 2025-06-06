@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :learning_concepts, only: [:index, :show] do
     post :generate_story, on: :collection
   end
+  
 end

@@ -3,6 +3,7 @@ class CreateLearningConcepts < ActiveRecord::Migration[8.0]
     create_table :learning_concepts do |t|
       t.string :name
       t.text :description
+      t.integer :id, null: false, primary_key: true
 
       t.timestamps
     end

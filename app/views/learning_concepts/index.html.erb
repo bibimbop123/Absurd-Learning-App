@@ -15,26 +15,26 @@
   <div class="card shadow-lg p-4 mb-5 bg-light" style="max-width: 600px; width: 100%;">
     <h2 class="mb-4">Choose Your Journey</h2>
 
-    <%= form_with url: generate_story_learning_concepts_path, method: :post, local: true do %>
-      <div class="mb-4 text-start">
-        <label for="concept-select" class="form-label">Learning Concept:</label>
-        <%= select_tag :concept_id,
-            options_from_collection_for_select(@concepts, :id, :name),
-            id: "concept-select",
-            class: "form-select" %>
-      </div>
+  <%= form_with url: generate_story_learning_concepts_path, method: :post, local: true do %>
+    <div class="mb-4 text-start">
+      <label for="concept-select" class="form-label">Learning Concept:</label>
+      <%= select_tag :concept_id,
+          options_from_collection_for_select(@concepts, :id, :name),
+          id: "concept-select",
+          class: "form-select" %>
+    </div>
 
-      <div class="mb-4 text-start">
-        <label for="theme_id" class="form-label">Absurd Theme:</label>
-        <%= select_tag :theme_id,
-            options_from_collection_for_select(@themes, :id, :name),
-            class: "form-select" %>
-      </div>
+    <div class="mb-4 text-start">
+      <label for="theme_id" class="form-label">Absurd Theme:</label>
+      <%= select_tag :theme_id,
+          options_from_collection_for_select(@themes, :id, :name),
+          class: "form-select" %>
+    </div>
 
-      <div class="d-grid">
-        <%= submit_tag "Generate Absurd Story", class: "btn btn-dark btn-lg" %>
-      </div>
-    <% end %>
+    <div class="d-grid">
+      <%= submit_tag "Generate Absurd Story", class: "btn btn-dark btn-lg" %>
+    </div>
+  <% end %>
 </div>
 <% if @absurd_stories.present? %>
   <h2 class="my-4">Generated Absurd Stories:</h2>
@@ -45,7 +45,7 @@
         <div class="carousel-item <%= 'active' if index == 0 %>">
           <div class="card h-100 shadow-sm border-0 mx-auto" style="max-width: 600px;">
             <div class="card-header bg-dark text-white fw-bold">
-              <%= story.absurd_theme.name %> Theme
+              <%= story.absurd_theme.name %> Theme (<%= story.learning_concept.name %>)
             </div>
             <div class="card-body text-start">
               <p class="card-text"><%= story.story_text %></p>
