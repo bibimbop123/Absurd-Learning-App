@@ -10,37 +10,36 @@ development:
 
   cable:
     <<: *default
-    database: absurd_learning_app_cable_development
+    database: absurd_learning_app_development # Use the same database for Action Cable
 
   queue:
     <<: *default
-    database: absurd_learning_app_queue_development
+    database: absurd_learning_app_development # Use the same database for SolidQueue
 
   cache:
     <<: *default
-    database: absurd_learning_app_cache_development
+    database: absurd_learning_app_development # Use the same database for caching
 
 test:
   primary:
     <<: *default
-    database: absurd_learning_app_test
+    database: absurd_learning_app_development # Use the development database for testing
 
   cable:
     <<: *default
-    database: absurd_learning_app_cable_test
+    database: absurd_learning_app_development # Use the same database for Action Cable
 
   queue:
     <<: *default
-    database: absurd_learning_app_queue_test
+    database: absurd_learning_app_development # Use the same database for SolidQueue
 
   cache:
     <<: *default
-    database: absurd_learning_app_cache_test
+    database: absurd_learning_app_development # Use the same database for caching
 
 production:
   primary:
-    adapter: postgresql
-    encoding: unicode
+    <<: *default
     database: absurd_learning_app_production
     username: postgres
     password: postgres
@@ -48,27 +47,24 @@ production:
     port: 5432
 
   cable:
-    adapter: postgresql
-    encoding: unicode
-    database: absurd_learning_app_cable_production
+    <<: *default
+    database: absurd_learning_app_production # Use the same database for Action Cable
     username: postgres
     password: postgres
     host: localhost
     port: 5432
 
   queue:
-    adapter: postgresql
-    encoding: unicode
-    database: absurd_learning_app_queue_production
+    <<: *default
+    database: absurd_learning_app_production # Use the same database for SolidQueue
     username: postgres
     password: postgres
     host: localhost
     port: 5432
 
   cache:
-    adapter: postgresql
-    encoding: unicode
-    database: absurd_learning_app_cache_production
+    <<: *default
+    database: absurd_learning_app_production # Use the same database for caching
     username: postgres
     password: postgres
     host: localhost
