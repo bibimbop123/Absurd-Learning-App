@@ -12,10 +12,10 @@ test:
   database: absurd_learning_app_test
 
 production:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  primary:
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
 
-  # 👇 Add this block to fix the cable error
   cable:
     <<: *default
     url: <%= ENV["DATABASE_URL"] %>
