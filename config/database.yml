@@ -96,3 +96,5 @@ production:
     <<: *primary_production
     database: absurd_learning_app_production_cable
     migrations_paths: db/cable_migrate
+  url: <%= ENV["DATABASE_URL"] %>
+
