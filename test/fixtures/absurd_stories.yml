@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  learning_concept: one
+  absurd_theme: one
+  user: one
+  story_text: MyText
+
+two:
+  learning_concept: two
+  absurd_theme: two
+  user: two
+  story_text: MyText
